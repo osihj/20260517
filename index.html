@@ -100,16 +100,21 @@
         }
 
         .main-theme {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 7.5vw, 2.8rem);
             font-weight: 900;
             color: var(--primary-red);
             background: linear-gradient(45deg, #D9383A 0%, #FF8C00 50%, #9932CC 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 25px;
-            letter-spacing: 4px;
+            letter-spacing: clamp(1px, 1vw, 4px);
             filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.1));
             z-index: 2;
+            white-space: nowrap;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            display: inline-block;
         }
 
         .event-tag {
@@ -154,27 +159,89 @@
             border: 0;
         }
 
-        /* 簡化時間與倒數 */
+        /* ==================== 修正：外框寬度符合文字不超出 ==================== */
         .simple-time-box {
             background: white;
-            padding: 12px 20px;
-            border-radius: 30px;
-            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.08);
+            padding: 32px 28px 26px; /* 增加左右與上下留白，營造大器格局 */
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(230, 57, 70, 0.18);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 12px;
             margin-bottom: 25px;
-            border: 2px solid var(--primary-gold);
+            border: 4px solid var(--primary-gold);
             z-index: 2;
-            width: 90%;
-            max-width: 340px;
+            width: max-content; /* 關鍵：寬度自適應內部文字，絕不超出 */
+            max-width: 95%; /* 手機防溢出螢幕保護 */
+            position: relative;
         }
 
-        .simple-date { font-size: 1.6rem; font-weight: 900; color: var(--primary-red); }
-        .simple-week { font-size: 0.9rem; font-weight: 700; color: #616161; background: #FFE082; padding: 2px 8px; border-radius: 12px; }
-        .simple-divider { width: 1px; height: 20px; background-color: #E0E0E0; }
-        .simple-hours { font-size: 1.2rem; font-weight: 900; color: #2C3E50; }
+        /* 活動舉辦日強烈標籤 */
+        .time-badge {
+            position: absolute;
+            top: -14px;
+            background: #FFD54F;
+            color: #4E342E;
+            font-size: 0.8rem;
+            font-weight: 900;
+            padding: 4px 14px;
+            border-radius: 12px;
+            border: 2px solid #1A252F;
+            letter-spacing: 2px;
+            box-shadow: 3px 3px 0 #1A252F;
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 4px 4px 0 #1A252F; }
+        }
+
+        .time-box-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+        }
+
+        /* 大幅加大主要活動日期 */
+        .simple-date { 
+            font-size: clamp(2.4rem, 10vw, 3.4rem); /* 更具氣勢的超大日期 */
+            font-weight: 900; 
+            color: var(--primary-red); 
+            line-height: 1;
+            letter-spacing: -1px;
+            white-space: nowrap; /* 防止換行 */
+        }
+        
+        /* 修正：星期維持小巧精緻，並強制不換行 */
+        .simple-week { 
+            font-size: 0.9rem; /* 回歸精緻原尺寸，減少視覺干擾 */
+            font-weight: 700; 
+            color: #616161; 
+            background: #FFE082; 
+            padding: 3px 8px; 
+            border-radius: 12px;
+            white-space: nowrap; /* 修正：強制不換行 */
+        }
+
+        .simple-divider { 
+            width: 2px; 
+            height: 35px; 
+            background-color: #E0E0E0; 
+        }
+
+        /* 大幅加大活動時間，並強制不換行 */
+        .simple-hours { 
+            font-size: clamp(1.3rem, 5.5vw, 1.7rem); /* 放大時間，讓資訊更對等清晰 */
+            font-weight: 900; 
+            color: #1A252F; 
+            letter-spacing: 0.5px;
+            white-space: nowrap; /* 修正：強制不換行 */
+        }
 
         .countdown {
             display: flex;
@@ -467,10 +534,13 @@
         </div>
 
         <div class="simple-time-box">
-            <div class="simple-date">5/17</div>
-            <div class="simple-week">星期日</div>
-            <div class="simple-divider"></div>
-            <div class="simple-hours">10:00 - 11:30</div>
+            <div class="time-badge">活動舉辦日</div>
+            <div class="time-box-row">
+                <div class="simple-date">5/17</div>
+                <div class="simple-week">星期日</div>
+                <div class="simple-divider"></div>
+                <div class="simple-hours">10:00 - 11:30</div>
+            </div>
         </div>
     </header>
 
@@ -485,7 +555,7 @@
                 <strong>新竹市勞工及青年處</strong><br>
                 <span style="font-size: 0.9rem; color: #7F8C8D;">新竹市東區龍山西路99號5樓</span>
             </p>
-            <a href="https://www.google.com/maps/search/?api=1&query=新竹市東區龍山西路99號" target="_blank" class="btn-map">
+            <a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E7%AB%B9%E5%B8%82%E6%9D%B1%E5%8D%80%E9%BE%8D%E5%B1%B1%E8%A5%BF%E8%B7%AF99%E8%99%9F5%E6%A8%93" target="_blank" class="btn-map">
                 <i class="fa-solid fa-location-arrow"></i> 開啟地圖導航
             </a>
         </section>
