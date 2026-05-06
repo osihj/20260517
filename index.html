@@ -130,6 +130,32 @@
             z-index: 2;
         }
 
+        /* 精彩回顧標題 */
+        .video-title {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #C32F27;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .video-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-gold);
+            border-radius: 2px;
+        }
+
         /* 影片區 */
         .video-container {
             width: 100%;
@@ -159,10 +185,10 @@
             border: 0;
         }
 
-        /* ==================== 修正：外框寬度符合文字不超出 ==================== */
+        /* ==================== 外框寬度符合文字不超出 ==================== */
         .simple-time-box {
             background: white;
-            padding: 32px 28px 26px; /* 增加左右與上下留白，營造大器格局 */
+            padding: 32px 28px 26px; /* 增加左右與上下留白 */
             border-radius: 24px;
             box-shadow: 0 12px 30px rgba(230, 57, 70, 0.18);
             display: flex;
@@ -173,12 +199,12 @@
             margin-bottom: 25px;
             border: 4px solid var(--primary-gold);
             z-index: 2;
-            width: max-content; /* 關鍵：寬度自適應內部文字，絕不超出 */
+            width: max-content; /* 寬度自適應內部文字，不超出 */
             max-width: 95%; /* 手機防溢出螢幕保護 */
             position: relative;
         }
 
-        /* 活動舉辦日強烈標籤 */
+        /* 活動舉辦日標籤 */
         .time-badge {
             position: absolute;
             top: -14px;
@@ -207,25 +233,25 @@
             width: 100%;
         }
 
-        /* 大幅加大主要活動日期 */
+        /* 主要活動日期 */
         .simple-date { 
-            font-size: clamp(2.4rem, 10vw, 3.4rem); /* 更具氣勢的超大日期 */
+            font-size: clamp(2.4rem, 10vw, 3.4rem); 
             font-weight: 900; 
             color: var(--primary-red); 
             line-height: 1;
             letter-spacing: -1px;
-            white-space: nowrap; /* 防止換行 */
+            white-space: nowrap; 
         }
         
-        /* 修正：星期維持小巧精緻，並強制不換行 */
+        /* 星期標籤 */
         .simple-week { 
-            font-size: 0.9rem; /* 回歸精緻原尺寸，減少視覺干擾 */
+            font-size: 0.9rem; 
             font-weight: 700; 
             color: #616161; 
             background: #FFE082; 
             padding: 3px 8px; 
             border-radius: 12px;
-            white-space: nowrap; /* 修正：強制不換行 */
+            white-space: nowrap; 
         }
 
         .simple-divider { 
@@ -234,13 +260,13 @@
             background-color: #E0E0E0; 
         }
 
-        /* 大幅加大活動時間，並強制不換行 */
+        /* 活動時間 */
         .simple-hours { 
-            font-size: clamp(1.3rem, 5.5vw, 1.7rem); /* 放大時間，讓資訊更對等清晰 */
+            font-size: clamp(1.3rem, 5.5vw, 1.7rem); 
             font-weight: 900; 
             color: #1A252F; 
             letter-spacing: 0.5px;
-            white-space: nowrap; /* 修正：強制不換行 */
+            white-space: nowrap; 
         }
 
         .countdown {
@@ -303,6 +329,23 @@
             text-align: center;
         }
 
+        /* 簡易平面化嵌入式地圖容器 */
+        .map-embed-container-flat {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border: 1px solid #E2E8F0; /* 極簡扁平化細灰邊線 */
+            margin: 15px 0;
+            background: #F8F9FA;
+        }
+
+        .map-embed-container-flat iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
         .btn-map {
             display: inline-flex;
             align-items: center;
@@ -317,7 +360,37 @@
             box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
             width: 100%;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 5px;
+        }
+
+        /* ==================== 最底部道館位置聯絡資訊區 ==================== */
+        .dojo-contact-section {
+            background: #FFFFFF;
+            border-top: 4px solid var(--primary-gold);
+            padding: 12px 16px; /* 縮小上下寬幅 */
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .dojo-contact-card {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .dojo-info-text-single {
+            font-size: 0.95rem;
+            color: #4A5568;
+            line-height: 1.6;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .dojo-info-text-single a {
+            color: #D9383A;
+            text-decoration: none;
+            font-weight: 900;
         }
 
         /* ==================== 普普風展演卡片區 ==================== */
@@ -366,7 +439,7 @@
             pointer-events: none;
         }
 
-        /* ---------- 1. 神鼓齊鳴 (立體大鼓) ---------- */
+        /* ---------- 1. 神鼓齊鳴 ---------- */
         .bg-drum { background-color: #4BD6FF; }
         .pop-icon-drum { width: 90px; height: 90px; position: relative; }
         .drum-cylinder {
@@ -384,7 +457,7 @@
             height: 6px; border-bottom: 5px dotted var(--dark-border); z-index: 3;
         }
 
-        /* ---------- 2. 神采腰鼓 (交叉鼓棒與彩帶) ---------- */
+        /* ---------- 2. 神采腰鼓 ---------- */
         .bg-ribbon { background-color: #FFE066; }
         .pop-icon-ribbon { width: 100px; height: 100px; position: relative; }
         .stick-cross-1 {
@@ -406,7 +479,7 @@
             border-radius: 50%; bottom: 10px; right: -5px; border-top-color: transparent; transform: rotate(-20deg);
         }
 
-        /* ---------- 3. 活力青年 (具象化微笑男生女生) ---------- */
+        /* ---------- 3. 活力青年 ---------- */
         .bg-youth { background-color: #FF85A2; }
         .pop-icon-youth {
             width: 110px; height: 100px; position: relative;
@@ -417,7 +490,6 @@
             width: 36px; height: 36px; border: 4px solid var(--dark-border);
             border-radius: 50%; margin: 0 auto; position: relative; z-index: 2;
         }
-        /* CSS 微笑表情 */
         .youth-head::before {
             content: ''; position: absolute; width: 5px; height: 5px; background: var(--dark-border);
             border-radius: 50%; top: 10px; left: 7px; box-shadow: 10px 0 0 var(--dark-border);
@@ -435,13 +507,12 @@
         .boy-body { background: #4BD6FF; }
         .girl-body { background: #FFE066; }
 
-        /* ---------- 4. 樂活手語 (兩隻手與巨大愛心) ---------- */
+        /* ---------- 4. 樂活手語 ---------- */
         .bg-sign { background-color: #00E676; }
         .pop-icon-sign { width: 110px; height: 100px; position: relative; }
         .pop-fa-heart {
             position: absolute; font-size: 50px; color: #FF4B5C;
             top: 10px; left: 30px; z-index: 3;
-            /* 普普風字體陰影描邊 */
             text-shadow: -2px -2px 0 var(--dark-border), 2px -2px 0 var(--dark-border), 
                          -2px 2px 0 var(--dark-border), 2px 2px 0 var(--dark-border), 
                          5px 5px 0 var(--dark-border);
@@ -456,13 +527,12 @@
             border: 4px solid var(--dark-border); border-radius: 20px 20px 0 0;
             bottom: 10px; right: 15px; transform: rotate(25deg); box-shadow: 4px 4px 0 var(--dark-border);
         }
-        /* 簡單的手指紋理 */
         .hand-l::after, .hand-r::after {
             content: ''; position: absolute; width: 4px; height: 15px; background: var(--dark-border);
             top: 5px; left: 10px; box-shadow: 6px 0 0 var(--dark-border); border-radius: 2px;
         }
 
-        /* ---------- 5. & 6. 維持原本的 FontAwesome 圓形徽章 ---------- */
+        /* ---------- 5. 神龍獻瑞 & 6. 祥獅賜福 ---------- */
         .pop-badge-circle {
             width: 80px; height: 80px;
             border: 4px solid var(--dark-border);
@@ -520,6 +590,10 @@
         <h1 class="main-theme">和平永續 福馬奔騰</h1>
         <div class="event-tag">文化饗宴</div>
 
+        <h3 class="video-title">
+            <i class="fa-solid fa-star" style="color: var(--primary-orange);"></i> 精彩回顧
+        </h3>
+
         <div class="video-container">
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/Kv36zzfq0O8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -551,11 +625,16 @@
             <div style="font-size: 2rem; color: var(--primary-orange); margin-bottom: 5px;">
                 <i class="fa-solid fa-map-location-dot"></i>
             </div>
-            <p style="font-size: 1rem; line-height: 1.5; margin: 12px 0; color: #34495E;">
+            <p style="font-size: 1rem; line-height: 1.5; margin: 12px 0 5px; color: #34495E;">
                 <strong>新竹市勞工及青年處</strong><br>
                 <span style="font-size: 0.9rem; color: #7F8C8D;">新竹市東區龍山西路99號5樓</span>
             </p>
-            <a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E7%AB%B9%E5%B8%82%E6%9D%B1%E5%8D%80%E9%BE%8D%E5%B1%B1%E8%A5%BF%E8%B7%AF99%E8%99%9F5%E6%A8%93" target="_blank" class="btn-map">
+            
+            <div class="map-embed-container-flat">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.579133827989!2d121.00705127602334!3d24.790585398018318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835c92b8041d1%3A0x4f31249d7df47dbb!2z5paw5b955biC5pS_5bqc6L6m5bel5Y-K6Z2S5pS_6JmV!5e0!3m2!1szh-TW!2stw!4v1715000000000!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=%E6%96%B0%E7%AB%B9%E5%B8%82%E6%94%BF%E5%BA%9C%E5%8B%9E%E5%B7%A5%E5%8F%8A%E9%9D%92%E5%B9%B4%E8%99%95&destination_place_id=ChIJ0UGAK8k1aDQRu330fZ0k8U8" target="_blank" class="btn-map">
                 <i class="fa-solid fa-location-arrow"></i> 開啟地圖導航
             </a>
         </section>
@@ -575,7 +654,7 @@
                     </div>
                     <div class="show-info">
                         <h4>神鼓齊鳴</h4>
-                        <p>鼓聲動地、銅鑼齊鳴！震撼人心鼓藝傳遞振奮的正能量，喚醒心中的無比勇氣與祥和氣場</p>
+                        <p>鼓聲動地、銅鑼齊鳴！震撼人心鼓藝傳遞振奮的正能量，喚醒心中的無比勇氣與祥和氣場。</p>
                     </div>
                 </div>
 
@@ -591,7 +670,7 @@
                     </div>
                     <div class="show-info">
                         <h4>神采腰鼓</h4>
-                        <p>透過腰鼓氣韻生動的展演，在歡喜雀躍的鼓聲中傳遞滿滿能量與活力，期許為現今動盪的世局帶來光明與希望！</p>
+                        <p>手持喜慶小鼓與繽紛彩帶，動態流線呈現腰鼓養生功法，展現精氣奕奕的生命大智慧。</p>
                     </div>
                 </div>
 
@@ -611,7 +690,7 @@
                     </div>
                     <div class="show-info">
                         <h4>活力青年</h4>
-                        <p>朝氣蓬勃的青年世代，以俐落帥氣的身段與自信笑容呈現活力能量，傳遞愛與薪火相傳的無限希望</p>
+                        <p>朝氣蓬勃的青年世代，以俐落帥氣的身段與自信笑容呈現武術活力，傳遞愛與薪火相傳的無限希望。</p>
                     </div>
                 </div>
 
@@ -624,7 +703,7 @@
                     </div>
                     <div class="show-info">
                         <h4>神龍獻瑞</h4>
-                        <p>金光燦爛的神龍威武翻騰，展現祥瑞神龍舞的磅礡氣勢，象徵慈悲與福澤連綿</p>
+                        <p>金光燦爛的神龍威武翻騰，展現祥瑞神龍舞的磅礡氣勢，象徵慈悲與福澤連綿。</p>
                     </div>
                 </div>
 
@@ -637,7 +716,7 @@
                     </div>
                     <div class="show-info">
                         <h4>祥獅賜福</h4>
-                        <p>活潑靈動的祥獅躍動，吐瑞氣迎吉祥，驅散陰霾，帶來福氣臨門與滿堂歡喜</p>
+                        <p>活潑靈動的祥獅躍動，吐瑞氣迎吉祥，驅散陰霾，帶來福氣臨門與滿堂歡喜。</p>
                     </div>
                 </div>
 
@@ -652,7 +731,7 @@
                     </div>
                     <div class="show-info">
                         <h4>樂活手語</h4>
-                        <p>指尖流動著溫暖的音符，用無聲的語言傳遞純粹的關懷，溫暖社會的每一個角落</p>
+                        <p>指尖流動著溫暖的音符，用無聲的語言傳遞純粹的關懷，溫暖社會的每一個角落。</p>
                     </div>
                 </div>
 
@@ -660,6 +739,14 @@
         </section>
 
     </main>
+
+    <section class="dojo-contact-section">
+        <div class="dojo-contact-card">
+            <p class="dojo-info-text-single">
+                新竹道館：新竹市光復路二段375號    電話：<a href="tel:03-5728103">03-5728103</a>
+            </p>
+        </div>
+    </section>
 
     <footer>
         <p>© 2026 太極門氣功養生學會新竹道館 版權所有</p>
