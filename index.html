@@ -2,21 +2,19 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>太極門氣功養生學會新竹地區60週年暨新竹道館34週年館慶</title>
-    <!-- 引入 Font Awesome 圖示與 Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-gold: #FFD700;
-            --primary-orange: #FF6200;
+            --primary-gold: #FFE066;
+            --primary-orange: #FF8C00;
             --primary-red: #E63946;
-            --primary-purple: #8A2BE2;
-            --primary-cyan: #00D2FF;
-            --primary-blue: #1E3A8A;
-            --bg-color: #FAF9F6;
+            --primary-purple: #9932CC;
+            --dark-border: #1A252F; /* 普普風粗黑邊框 */
+            --bg-gradient: linear-gradient(135deg, #FFFDF0 0%, #FFF3E0 35%, #FFEbee 70%, #F3E5F5 100%);
             --card-bg: rgba(255, 255, 255, 0.95);
         }
 
@@ -24,18 +22,20 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: #2C3E50;
-            font-family: 'Noto Sans TC', sans-serif;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* 全滿版活潑鮮豔、交織流線動態背景 (完美致敬主布幕色彩) */
-        .vibrant-background-wrapper {
+        /* ==================== 背景動態 ==================== */
+        .pony-background-wrapper {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -46,224 +46,101 @@
             overflow: hidden;
         }
 
-        /* 頂部柔和暖陽金光圈 */
         .sun-glow {
             position: absolute;
-            top: -150px;
+            top: -100px;
             left: 50%;
             transform: translateX(-50%);
-            width: 1000px;
-            height: 1000px;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.35) 0%, rgba(255, 98, 0, 0.12) 50%, rgba(255, 255, 255, 0) 70%);
-            filter: blur(30px);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 224, 102, 0.35) 0%, rgba(255, 140, 0, 0.1) 50%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(20px);
         }
 
-        /* 多層次流線彩色緞帶與波浪 (讓畫面超飽滿) */
-        .bg-wave {
+        .pony-pattern-layer {
             position: absolute;
-            border-style: solid;
-            border-radius: 50%;
-            opacity: 0.75;
-            filter: drop-shadow(0 8px 25px rgba(230, 57, 70, 0.2));
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF8C00' fill-opacity='0.7'%3E%3Cpath d='M20 30c3-5 10-5 13-1 2 3 0 8-3 9-4 2-10 1-12-3s-1-4 2-5zm18 5c1 1 2 2 3 3 2 1 4-1 3-3-1-2-4-2-6-1 0 1 0 1 0 1zm-1 9c1-1 3-3 4-2 2 1 1 4-1 5-2 1-3-1-3-3zm13-17c-1-1-2-1-3-1-2 0-3 2-2 3 1 2 3 1 5-1zm-21 21c1-2 3-3 5-2 3 1 3 4 1 6-2 1-4 0-5-2zm12 11c1-1 3-2 4-1 2 1 1 3-1 4-2 1-3-1-3-3zm-10 9c0-1 1-3 3-3 2 0 3 2 2 3-1 1-3 1-4 0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 100px 100px;
+            animation: backgroundWalk 45s linear infinite;
         }
 
-        /* 左側飽滿多色波浪 */
-        .wave-left-gold {
-            top: 5%;
-            left: -250px;
-            width: 700px;
-            height: 1000px;
-            border-width: 0 28px 0 0;
-            border-color: var(--primary-gold);
-            transform: rotate(-25deg);
-        }
-        .wave-left-orange {
-            top: 7%;
-            left: -270px;
-            width: 700px;
-            height: 1000px;
-            border-width: 0 20px 0 0;
-            border-color: var(--primary-orange);
-            transform: rotate(-20deg);
-        }
-        .wave-left-cyan {
-            top: 9%;
-            left: -290px;
-            width: 700px;
-            height: 1000px;
-            border-width: 0 14px 0 0;
-            border-color: var(--primary-cyan);
-            transform: rotate(-15deg);
-        }
-        .wave-left-magenta {
-            top: 11%;
-            left: -310px;
-            width: 700px;
-            height: 1000px;
-            border-width: 0 10px 0 0;
-            border-color: #E91E63;
-            transform: rotate(-10deg);
+        @keyframes backgroundWalk {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 100px 100px; }
         }
 
-        /* 右側飽滿多色波浪 */
-        .wave-right-red {
-            top: 30%;
-            right: -300px;
-            width: 800px;
-            height: 1100px;
-            border-width: 0 0 0 30px;
-            border-color: var(--primary-red);
-            transform: rotate(20deg);
-        }
-        .wave-right-purple {
-            top: 32%;
-            right: -320px;
-            width: 800px;
-            height: 1100px;
-            border-width: 0 0 0 20px;
-            border-color: var(--primary-purple);
-            transform: rotate(25deg);
-        }
-        .wave-right-blue {
-            top: 34%;
-            right: -340px;
-            width: 800px;
-            height: 1100px;
-            border-width: 0 0 0 14px;
-            border-color: var(--primary-blue);
-            transform: rotate(30deg);
-        }
-        .wave-right-gold {
-            top: 36%;
-            right: -360px;
-            width: 800px;
-            height: 1100px;
-            border-width: 0 0 0 10px;
-            border-color: var(--primary-gold);
-            transform: rotate(35deg);
-        }
-
-        /* 下方加強飽滿波紋 */
-        .wave-bottom-cyan {
-            bottom: -200px;
-            left: -150px;
-            width: 600px;
-            height: 600px;
-            border-width: 15px 0 0 0;
-            border-color: var(--primary-cyan);
-            transform: rotate(45deg);
-        }
-        .wave-bottom-magenta {
-            bottom: -220px;
-            right: -100px;
-            width: 600px;
-            height: 600px;
-            border-width: 15px 0 0 0;
-            border-color: #E91E63;
-            transform: rotate(-35deg);
-        }
-
-        /* 背景慶典彩斑/光圈 */
-        .bokeh {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
-            filter: blur(8px);
-        }
-
-        /* 首頁主視覺 */
+        /* ==================== 主視覺區 ==================== */
         .hero {
-            min-height: 100vh;
+            padding: 50px 16px 30px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 50px 20px;
             position: relative;
         }
 
-        /* 大器主標題組：華康超明體質感 (Noto Serif TC 900) */
         .header-group {
-            margin-bottom: 30px;
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin-bottom: 20px;
+            z-index: 2;
         }
 
-        .ming-style {
-            font-family: 'Noto Serif TC', serif;
-            font-weight: 900;
-            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.8);
-            line-height: 1.25;
-        }
-
-        /* 第一行：太極門氣功養生學會60週年 (字距再縮小) */
         .association-title {
-            font-size: 2.3rem;
-            color: #2C3E50;
-            letter-spacing: 0.12em; /* 字距再縮小，整體更加凝聚 */
-            margin-bottom: 12px;
-            width: 100%;
+            font-size: 1.2rem;
+            color: #D9383A;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            line-height: 1.5;
+            margin-bottom: 2px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
         }
 
-        /* 第二行：新竹道館34週年館慶 (字體放大、字距再縮小、調整為紅色) */
-        .anniversary-title {
-            font-size: 4.2rem;
-            color: var(--primary-red); /* 調整為鮮豔的紅色 */
-            letter-spacing: 0.02em; /* 字距再縮小，顯得渾厚緊湊 */
-            width: 100%;
-            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.9), 0 0 15px rgba(230, 57, 70, 0.15);
-        }
-
-        /* 主題：和平永續 福馬奔騰 */
         .main-theme {
-            font-size: 4.6rem;
+            font-size: 2.8rem;
             font-weight: 900;
             color: var(--primary-red);
-            background: linear-gradient(45deg, #D9383A 0%, #FF6200 45%, #8A2BE2 100%);
+            background: linear-gradient(45deg, #D9383A 0%, #FF8C00 50%, #9932CC 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
-            letter-spacing: 6px;
-            filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.15));
-            animation: breathe 4s infinite ease-in-out;
-        }
-
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.1));
+            z-index: 2;
         }
 
         .event-tag {
             background: linear-gradient(135deg, var(--primary-orange), var(--primary-red));
             color: white;
-            padding: 10px 45px;
-            border-radius: 30px;
-            font-size: 1.4rem;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 1rem;
             font-weight: bold;
-            letter-spacing: 6px;
-            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.35);
-            margin-bottom: 40px;
+            letter-spacing: 3px;
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.25);
+            margin-bottom: 35px;
+            z-index: 2;
         }
 
-        /* 影片播放器容器 */
+        /* 影片區 */
         .video-container {
             width: 100%;
-            max-width: 680px;
-            margin-bottom: 40px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
+            max-width: 500px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
             overflow: hidden;
-            border: 5px solid #FFF;
+            border: 2px solid #FFF;
             background: #000;
+            z-index: 2;
         }
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
         }
@@ -277,566 +154,415 @@
             border: 0;
         }
 
-        /* 倒數計時區：升級大畫面版 */
-        .countdown-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #475569;
-            letter-spacing: 4px;
-            margin-bottom: 18px;
-        }
-
-        .countdown-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 45px;
-        }
-
-        .countdown-card {
-            background: var(--card-bg);
-            padding: 25px 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            min-width: 130px;
-            border-top: 5px solid var(--primary-orange);
-            border-bottom: 5px solid var(--primary-red);
-            transition: transform 0.3s ease;
-        }
-
-        .countdown-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .countdown-number {
-            font-size: 3.8rem;
-            font-weight: 900;
-            color: #1A252F;
-            line-height: 1;
-            font-feature-settings: "tnum"; /* 等寬數字 */
-        }
-
-        .countdown-label {
-            font-size: 1.1rem;
-            color: #64748B;
-            margin-top: 10px;
-            font-weight: 700;
-        }
-
-        /* 日期與時間區 */
+        /* 簡化時間與倒數 */
         .simple-time-box {
             background: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.08);
             display: flex;
             align-items: center;
-            gap: 24px;
-            margin-bottom: 40px;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
             border: 2px solid var(--primary-gold);
+            z-index: 2;
+            width: 90%;
+            max-width: 340px;
         }
 
-        .simple-date {
-            font-size: 2.6rem;
-            font-weight: 900;
-            color: var(--primary-red);
+        .simple-date { font-size: 1.6rem; font-weight: 900; color: var(--primary-red); }
+        .simple-week { font-size: 0.9rem; font-weight: 700; color: #616161; background: #FFE082; padding: 2px 8px; border-radius: 12px; }
+        .simple-divider { width: 1px; height: 20px; background-color: #E0E0E0; }
+        .simple-hours { font-size: 1.2rem; font-weight: 900; color: #2C3E50; }
+
+        .countdown {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            z-index: 2;
         }
 
-        .simple-week {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #475569;
-            background: #FFE082;
-            padding: 4px 14px;
-            border-radius: 20px;
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            min-width: 75px;
+            border-top: 3px solid var(--primary-gold);
+            border-bottom: 3px solid var(--primary-purple);
         }
 
-        .simple-divider {
-            width: 2px;
-            height: 35px;
-            background-color: #E2E8F0;
-        }
+        .countdown-num { font-size: 1.8rem; font-weight: 900; color: var(--primary-red); line-height: 1.1; }
+        .countdown-label { font-size: 0.8rem; color: #666; margin-top: 2px; font-weight: bold; }
 
-        .simple-hours {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #1E293B;
-        }
-
-        /* 滾動指引 */
-        .scroll-down {
-            font-size: 18px;
-            color: var(--primary-red);
-            animation: bounceDown 2s infinite;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        @keyframes bounceDown {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* 主內容區 */
+        /* ==================== 內容區 ==================== */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 30px 16px;
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.6rem;
+            font-size: 1.8rem;
             color: #C32F27;
-            margin-bottom: 50px;
+            margin-bottom: 35px;
             position: relative;
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 5px;
+            width: 60px; height: 4px;
             background: linear-gradient(90deg, var(--primary-orange), var(--primary-purple));
-            margin: 15px auto 0;
-            border-radius: 3px;
+            margin: 10px auto 0;
+            border-radius: 2px;
         }
 
-        /* 精緻地圖導航與平面示意圖 */
+        /* ==================== 地圖區 ==================== */
         .info-section {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            margin: 0 auto 80px;
-            max-width: 540px;
+            background: white;
+            border-radius: 16px;
+            padding: 25px 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin: 0 auto 50px;
+            max-width: 480px;
             border: 1px solid rgba(255,255,255,0.8);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .info-address {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            margin: 15px 0 10px;
-            color: #1E293B;
-        }
-
-        /* 簡易平面地圖 */
-        .simple-map-graphic {
-            width: 100%;
-            max-width: 440px;
-            height: 260px;
-            background: #F1F5F9;
-            border-radius: 18px;
-            margin: 20px 0 25px;
-            border: 1px solid #CBD5E1;
-            position: relative;
-            overflow: hidden;
-            box-shadow: inset 0 2px 12px rgba(0,0,0,0.05);
-        }
-
-        .map-road {
-            position: absolute;
-            background: #E2E8F0;
-        }
-        .road-vertical-1 { width: 45px; height: 100%; left: 35px; }
-        .road-vertical-2 { width: 50px; height: 100%; right: 60px; }
-        .road-horizontal { width: 100%; height: 40px; top: 125px; }
-        
-        .map-landmark {
-            position: absolute;
-            background: #D1FAE5;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            color: #065F46;
-            font-weight: bold;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-        .landmark-costco { width: 95px; height: 45px; right: 125px; top: 45px; background: #DBEAFE; color: #1E40AF; }
-        .landmark-park { width: 85px; height: 50px; left: 105px; bottom: 30px; }
-        
-        /* 目標位置標記 */
-        .target-pin {
-            position: absolute;
-            left: 190px;
-            top: 112px;
-            width: 125px;
-            background: #FEF2F2;
-            border: 2px solid var(--primary-red);
-            border-radius: 10px;
-            padding: 8px;
-            text-align: center;
-            z-index: 5;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
-        }
-        .target-pin .pin-icon {
-            color: var(--primary-red);
-            font-size: 1.4rem;
-            margin-bottom: 2px;
-            animation: bounce 1.5s infinite;
-        }
-        .target-pin .pin-text {
-            font-size: 0.8rem;
-            font-weight: 900;
-            color: #991B1B;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .road-label {
-            position: absolute;
-            font-size: 0.8rem;
-            color: #64748B;
-            font-weight: bold;
         }
 
         .btn-map {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 15px 32px;
+            gap: 8px;
+            padding: 14px 20px;
             background: linear-gradient(135deg, var(--primary-orange), var(--primary-red));
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 18px rgba(230, 57, 70, 0.3);
-            width: 95%;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+            width: 100%;
             justify-content: center;
+            margin-top: 15px;
         }
 
-        .btn-map:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
-        }
-
-        /* 節目展演格線與卡片 */
+        /* ==================== 普普風展演卡片區 ==================== */
         .show-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 35px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .show-card {
-            background: var(--card-bg);
-            border-radius: 24px;
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.06);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            border: 4px solid var(--dark-border);
+            box-shadow: 6px 8px 0px var(--dark-border);
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(5px);
-        }
-
-        .show-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px rgba(138, 43, 226, 0.15);
-            border-color: var(--primary-purple);
-        }
-
-        .show-img-container {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
             position: relative;
-            background: #F1F5F9;
+            transition: transform 0.1s;
         }
 
-        .show-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        .show-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 6px 0px var(--dark-border);
         }
 
-        .show-card:hover .show-img {
-            transform: scale(1.08);
-        }
-
-        /* 替代圖片佔位 */
-        .show-placeholder {
-            width: 100%;
-            height: 100%;
+        /* 普普風半色調網點底圖 */
+        .pop-illustration {
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--dark-border);
             display: flex;
-            justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #FFE082, #FFB300);
-            color: white;
-            font-size: 4.5rem;
-        }
-        
-        .placeholder-purple {
-            background: linear-gradient(135deg, #CE93D8, #8E24AA);
-        }
-
-        .show-info {
-            padding: 28px;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
+            background-color: #F8F9FA;
         }
 
+        .halftone-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--dark-border) 15%, transparent 16%);
+            background-size: 12px 12px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* ---------- 1. 神鼓齊鳴 (立體大鼓) ---------- */
+        .bg-drum { background-color: #4BD6FF; }
+        .pop-icon-drum { width: 90px; height: 90px; position: relative; }
+        .drum-cylinder {
+            position: absolute; width: 70px; height: 55px; background: #FF4B5C;
+            border: 4px solid var(--dark-border); border-radius: 12px;
+            bottom: 5px; left: 10px; box-shadow: 5px 5px 0 var(--dark-border);
+        }
+        .drum-top-surface {
+            position: absolute; width: 70px; height: 22px; background: #FFE066;
+            border: 4px solid var(--dark-border); border-radius: 50%;
+            top: 13px; left: 10px; z-index: 2;
+        }
+        .drum-dots {
+            position: absolute; top: 38px; left: 15px; right: 15px;
+            height: 6px; border-bottom: 5px dotted var(--dark-border); z-index: 3;
+        }
+
+        /* ---------- 2. 神采腰鼓 (交叉鼓棒與彩帶) ---------- */
+        .bg-ribbon { background-color: #FFE066; }
+        .pop-icon-ribbon { width: 100px; height: 100px; position: relative; }
+        .stick-cross-1 {
+            position: absolute; width: 85px; height: 12px; background: #FF4B5C;
+            border: 4px solid var(--dark-border); border-radius: 6px;
+            top: 45px; left: 8px; transform: rotate(40deg); box-shadow: 3px 3px 0 var(--dark-border); z-index: 2;
+        }
+        .stick-cross-2 {
+            position: absolute; width: 85px; height: 12px; background: #9932CC;
+            border: 4px solid var(--dark-border); border-radius: 6px;
+            top: 45px; left: 8px; transform: rotate(-40deg); box-shadow: 3px 3px 0 var(--dark-border); z-index: 3;
+        }
+        .ribbon-loop-1 {
+            position: absolute; width: 45px; height: 35px; border: 5px solid #00E676;
+            border-radius: 50%; top: 10px; left: -5px; border-bottom-color: transparent; transform: rotate(-20deg);
+        }
+        .ribbon-loop-2 {
+            position: absolute; width: 45px; height: 35px; border: 5px solid #4BD6FF;
+            border-radius: 50%; bottom: 10px; right: -5px; border-top-color: transparent; transform: rotate(-20deg);
+        }
+
+        /* ---------- 3. 活力青年 (具象化微笑男生女生) ---------- */
+        .bg-youth { background-color: #FF85A2; }
+        .pop-icon-youth {
+            width: 110px; height: 100px; position: relative;
+            display: flex; justify-content: center; gap: 12px; align-items: flex-end; padding-bottom: 10px;
+        }
+        .youth-figure { position: relative; width: 42px; height: 75px; }
+        .youth-head {
+            width: 36px; height: 36px; border: 4px solid var(--dark-border);
+            border-radius: 50%; margin: 0 auto; position: relative; z-index: 2;
+        }
+        /* CSS 微笑表情 */
+        .youth-head::before {
+            content: ''; position: absolute; width: 5px; height: 5px; background: var(--dark-border);
+            border-radius: 50%; top: 10px; left: 7px; box-shadow: 10px 0 0 var(--dark-border);
+        }
+        .youth-head::after {
+            content: ''; position: absolute; width: 12px; height: 6px; border-bottom: 3px solid var(--dark-border);
+            border-radius: 0 0 10px 10px; top: 18px; left: 8px;
+        }
+        .boy-head { background: #FFE066; }
+        .girl-head { background: #00E676; }
+        .youth-body {
+            width: 42px; height: 40px; border: 4px solid var(--dark-border);
+            border-radius: 20px 20px 0 0; margin-top: -5px; box-shadow: 4px 4px 0 var(--dark-border);
+        }
+        .boy-body { background: #4BD6FF; }
+        .girl-body { background: #FFE066; }
+
+        /* ---------- 4. 樂活手語 (兩隻手與巨大愛心) ---------- */
+        .bg-sign { background-color: #00E676; }
+        .pop-icon-sign { width: 110px; height: 100px; position: relative; }
+        .pop-fa-heart {
+            position: absolute; font-size: 50px; color: #FF4B5C;
+            top: 10px; left: 30px; z-index: 3;
+            /* 普普風字體陰影描邊 */
+            text-shadow: -2px -2px 0 var(--dark-border), 2px -2px 0 var(--dark-border), 
+                         -2px 2px 0 var(--dark-border), 2px 2px 0 var(--dark-border), 
+                         5px 5px 0 var(--dark-border);
+        }
+        .hand-l {
+            position: absolute; width: 35px; height: 50px; background: #FFE066;
+            border: 4px solid var(--dark-border); border-radius: 20px 20px 0 0;
+            bottom: 10px; left: 15px; transform: rotate(-25deg); box-shadow: 4px 4px 0 var(--dark-border);
+        }
+        .hand-r {
+            position: absolute; width: 35px; height: 50px; background: #FFE066;
+            border: 4px solid var(--dark-border); border-radius: 20px 20px 0 0;
+            bottom: 10px; right: 15px; transform: rotate(25deg); box-shadow: 4px 4px 0 var(--dark-border);
+        }
+        /* 簡單的手指紋理 */
+        .hand-l::after, .hand-r::after {
+            content: ''; position: absolute; width: 4px; height: 15px; background: var(--dark-border);
+            top: 5px; left: 10px; box-shadow: 6px 0 0 var(--dark-border); border-radius: 2px;
+        }
+
+        /* ---------- 5. & 6. 維持原本的 FontAwesome 圓形徽章 ---------- */
+        .pop-badge-circle {
+            width: 80px; height: 80px;
+            border: 4px solid var(--dark-border);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 4px 4px 0 var(--dark-border);
+            position: relative; z-index: 2;
+        }
+        .pop-badge-circle i { font-size: 2.2rem; filter: drop-shadow(2px 2px 0px #FFF); }
+        
+        .bg-dragon { background-color: #FF8C00; }
+        .badge-dragon { background: #FF4B5C; color: #FFE066; }
+        
+        .bg-lion { background-color: #9932CC; }
+        .badge-lion { background: #FFE066; color: #1A252F; }
+
+
+        /* 內文區 */
+        .show-info {
+            padding: 20px 16px;
+            text-align: center;
+            background: #FFFFFF;
+            flex-grow: 1;
+        }
         .show-info h4 {
-            font-size: 1.6rem;
-            color: #0F172A;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            color: var(--dark-border);
+            margin-bottom: 8px;
             font-weight: 900;
         }
-
         .show-info p {
-            font-size: 1.05rem;
-            color: #475569;
-            line-height: 1.65;
+            font-size: 0.95rem;
+            color: #4A5568;
+            line-height: 1.6;
         }
 
-        /* 頁尾 */
         footer {
-            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-            color: white;
-            text-align: center;
-            padding: 45px 20px;
-            font-size: 1rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* 手機與平板響應式優化 */
-        @media (max-width: 768px) {
-            .association-title {
-                font-size: 1.5rem;
-                letter-spacing: 0.05em;
-            }
-            .anniversary-title {
-                font-size: 2.4rem;
-                letter-spacing: 0.02em;
-            }
-            .main-theme {
-                font-size: 3.2rem;
-                letter-spacing: 3px;
-            }
-            .countdown-container {
-                gap: 12px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .countdown-card {
-                min-width: 90px;
-                padding: 15px 10px;
-            }
-            .countdown-number {
-                font-size: 2.5rem;
-            }
-            .simple-time-box {
-                flex-direction: column;
-                gap: 10px;
-                padding: 18px 25px;
-                border-radius: 25px;
-            }
-            .simple-divider {
-                width: 60%;
-                height: 2px;
-            }
-            .show-grid {
-                grid-template-columns: 1fr;
-            }
+            background: linear-gradient(135deg, #2C3E50 0%, #1A252F 100%);
+            color: white; text-align: center; padding: 25px 16px; font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- 滿版活力鮮豔能量波浪與光圈背景 -->
-    <div class="vibrant-background-wrapper">
+    <div class="pony-background-wrapper">
         <div class="sun-glow"></div>
-        
-        <!-- 左側交織色條 -->
-        <div class="bg-wave wave-left-gold"></div>
-        <div class="bg-wave wave-left-orange"></div>
-        <div class="bg-wave wave-left-cyan"></div>
-        <div class="bg-wave wave-left-magenta"></div>
-        
-        <!-- 右側交織色條 -->
-        <div class="bg-wave wave-right-red"></div>
-        <div class="bg-wave wave-right-purple"></div>
-        <div class="bg-wave wave-right-blue"></div>
-        <div class="bg-wave wave-right-gold"></div>
-        
-        <!-- 底部交織色條 -->
-        <div class="bg-wave wave-bottom-cyan"></div>
-        <div class="bg-wave wave-bottom-magenta"></div>
-
-        <!-- 點綴微光圈 (Bokeh) -->
-        <div class="bokeh" style="width: 140px; height: 140px; top: 15%; left: 20%;"></div>
-        <div class="bokeh" style="width: 180px; height: 180px; top: 45%; right: 15%;"></div>
-        <div class="bokeh" style="width: 110px; height: 110px; bottom: 10%; left: 10%;"></div>
+        <div class="pony-pattern-layer"></div>
     </div>
 
-    <!-- 首頁主視覺 -->
     <header class="hero">
         <div class="header-group">
-            <!-- 字距縮小，第二行主標調整為顯眼紅色、字型大器浑厚 -->
-            <p class="association-title ming-style">太極門氣功養生學會60週年</p>
-            <p class="anniversary-title ming-style">新竹道館34週年館慶</p>
+            <p class="association-title">太極門氣功養生學會60週年</p>
+            <p class="association-title">新竹道館34週年館慶</p>
         </div>
         <h1 class="main-theme">和平永續 福馬奔騰</h1>
         <div class="event-tag">文化饗宴</div>
 
-        <!-- 影片播放視窗 -->
         <div class="video-container">
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/Kv36zzfq0O8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- 倒數計時區：大畫面版 -->
-        <p class="countdown-title">慶典倒數時刻</p>
-        <div class="countdown-container" id="countdown">
-            <div class="countdown-card">
-                <div class="countdown-number" id="days">00</div>
-                <div class="countdown-label">天</div>
-            </div>
-            <div class="countdown-card">
-                <div class="countdown-number" id="hours">00</div>
-                <div class="countdown-label">時</div>
-            </div>
-            <div class="countdown-card">
-                <div class="countdown-number" id="minutes">00</div>
-                <div class="countdown-label">分</div>
-            </div>
-            <div class="countdown-card">
-                <div class="countdown-number" id="seconds">00</div>
-                <div class="countdown-label">秒</div>
-            </div>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item"><div class="countdown-num" id="days">00</div><div class="countdown-label">天</div></div>
+            <div class="countdown-item"><div class="countdown-num" id="hours">00</div><div class="countdown-label">時</div></div>
+            <div class="countdown-item"><div class="countdown-num" id="minutes">00</div><div class="countdown-label">分</div></div>
+            <div class="countdown-item"><div class="countdown-num" id="seconds">00</div><div class="countdown-label">秒</div></div>
         </div>
 
-        <!-- 簡潔化日期與時間 -->
         <div class="simple-time-box">
             <div class="simple-date">5/17</div>
             <div class="simple-week">星期日</div>
             <div class="simple-divider"></div>
             <div class="simple-hours">10:00 - 11:30</div>
         </div>
-
-        <div class="scroll-down" onclick="scrollToContent()">
-            <p style="font-size: 15px; margin-bottom: 8px;">查看活動地點與精彩展演</p>
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
     </header>
 
-    <!-- 主內容區 -->
-    <main class="container" id="mainContent">
+    <main class="container">
         
-        <!-- 地圖導航與平面示意圖 -->
         <section class="info-section">
-            <h2 class="section-title" style="font-size: 1.9rem; margin-bottom: 20px;">活動地點</h2>
-            <div style="font-size: 2.4rem; color: var(--primary-orange);">
+            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 15px;">活動地點</h2>
+            <div style="font-size: 2rem; color: var(--primary-orange); margin-bottom: 5px;">
                 <i class="fa-solid fa-map-location-dot"></i>
             </div>
-            <p class="info-address">
+            <p style="font-size: 1rem; line-height: 1.5; margin: 12px 0; color: #34495E;">
                 <strong>新竹市勞工及青年處</strong><br>
-                <span style="font-size: 1rem; color: #64748B;">新竹市東區龍山西路99號5樓</span>
+                <span style="font-size: 0.9rem; color: #7F8C8D;">新竹市東區龍山西路99號5樓</span>
             </p>
-
-            <!-- 簡易平面感示意地圖 -->
-            <div class="simple-map-graphic">
-                <!-- 道路 -->
-                <div class="map-road road-vertical-1"></div>
-                <div class="map-road road-vertical-2"></div>
-                <div class="map-road road-horizontal"></div>
-                
-                <!-- 道路標籤 -->
-                <div class="road-label" style="top: 135px; left: 90px;">龍山西路</div>
-                <div class="road-label" style="top: 45px; left: 45px; writing-mode: vertical-lr;">光復路二段</div>
-                <div class="road-label" style="top: 160px; right: 70px; writing-mode: vertical-lr;">慈雲路</div>
-                
-                <!-- 周邊地標 -->
-                <div class="map-landmark landmark-costco">好市多 Costco</div>
-                <div class="map-landmark landmark-park">龍山公園</div>
-                
-                <!-- 目標紅點標示 -->
-                <div class="target-pin">
-                    <div class="pin-icon"><i class="fa-solid fa-location-dot"></i></div>
-                    <div class="pin-text">勞工及青年處 5F</div>
-                </div>
-            </div>
-
-            <!-- 地圖導航連結 -->
-            <a href="https://maps.google.com/?q=新竹市東區龍山西路99號5樓" target="_blank" class="btn-map">
-                <i class="fa-solid fa-location-arrow"></i> 開啟 Google 地圖導航
+            <a href="https://www.google.com/maps/search/?api=1&query=新竹市東區龍山西路99號" target="_blank" class="btn-map">
+                <i class="fa-solid fa-location-arrow"></i> 開啟地圖導航
             </a>
         </section>
 
-        <!-- 展演內容 -->
         <section>
             <h2 class="section-title">精采展演內容</h2>
             <div class="show-grid">
                 
-                <!-- 1. 神鼓齊鳴 -->
                 <div class="show-card">
-                    <div class="show-img-container">
-                        <img src="IMG_3850.jpg" alt="神鼓齊鳴" class="show-img">
+                    <div class="pop-illustration bg-drum">
+                        <div class="halftone-overlay"></div>
+                        <div class="pop-icon-drum">
+                            <div class="drum-cylinder"></div>
+                            <div class="drum-top-surface"></div>
+                            <div class="drum-dots"></div>
+                        </div>
                     </div>
                     <div class="show-info">
                         <h4>神鼓齊鳴</h4>
-                        <p>鼓聲動地、銅鑼齊鳴！傳遞振奮人心的正面能量，喚醒每個人心中的無比勇氣與祥和氣場。</p>
+                        <p>鼓聲動地、銅鑼齊鳴！震撼人心鼓藝傳遞振奮的正能量，喚醒心中的無比勇氣與祥和氣場。</p>
                     </div>
                 </div>
 
-                <!-- 2. 神采腰鼓 -->
                 <div class="show-card">
-                    <div class="show-img-container">
-                        <img src="IMG_3880.jpg" alt="神采腰鼓" class="show-img">
+                    <div class="pop-illustration bg-ribbon">
+                        <div class="halftone-overlay"></div>
+                        <div class="pop-icon-ribbon">
+                            <div class="stick-cross-1"></div>
+                            <div class="stick-cross-2"></div>
+                            <div class="ribbon-loop-1"></div>
+                            <div class="ribbon-loop-2"></div>
+                        </div>
                     </div>
                     <div class="show-info">
                         <h4>神采腰鼓</h4>
-                        <p>手持喜慶小鼓與繽紛彩帶，展現長者神采奕奕、活力十足的養生功法，活絡全身筋骨。</p>
+                        <p>手持喜慶小鼓與繽紛彩帶，動態流線呈現腰鼓養生功法，展現精氣奕奕的生命大智慧。</p>
                     </div>
                 </div>
 
-                <!-- 3. 活力青年 -->
                 <div class="show-card">
-                    <div class="show-img-container">
-                        <img src="IMG_3888.jpg" alt="活力青年" class="show-img">
+                    <div class="pop-illustration bg-youth">
+                        <div class="halftone-overlay"></div>
+                        <div class="pop-icon-youth">
+                            <div class="youth-figure">
+                                <div class="youth-head boy-head"></div>
+                                <div class="youth-body boy-body"></div>
+                            </div>
+                            <div class="youth-figure">
+                                <div class="youth-head girl-head"></div>
+                                <div class="youth-body girl-body"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="show-info">
                         <h4>活力青年</h4>
-                        <p>朝氣蓬勃的青年世代，以俐落帥氣的身段與充滿自信的笑容，傳遞愛、和平與薪火相傳的無限希望。</p>
+                        <p>朝氣蓬勃的青年世代，以俐落帥氣的身段與自信笑容呈現武術活力，傳遞愛與薪火相傳的無限希望。</p>
                     </div>
                 </div>
 
-                <!-- 4. 神龍獻瑞 -->
                 <div class="show-card">
-                    <div class="show-img-container">
-                        <img src="TENG2764.jpg" alt="神龍獻瑞" class="show-img">
+                    <div class="pop-illustration bg-dragon">
+                        <div class="halftone-overlay"></div>
+                        <div class="pop-badge-circle badge-dragon">
+                            <i class="fa-solid fa-dragon"></i>
+                        </div>
                     </div>
                     <div class="show-info">
                         <h4>神龍獻瑞</h4>
-                        <p>金光燦爛的神龍威武翻騰，象徵慈悲、祥瑞與福澤連綿，為現場所有來賓降下最誠摯的祝福。</p>
+                        <p>金光燦爛的神龍威武翻騰，展現祥瑞神龍舞的磅礡氣勢，象徵慈悲與福澤連綿。</p>
                     </div>
                 </div>
 
-                <!-- 5. 祥獅賜福 -->
                 <div class="show-card">
-                    <div class="show-img-container">
-                        <div class="show-placeholder">
-                            <i class="fa-solid fa-face-smile-beam"></i>
+                    <div class="pop-illustration bg-lion">
+                        <div class="halftone-overlay"></div>
+                        <div class="pop-badge-circle badge-lion">
+                            <i class="fa-solid fa-paw"></i>
                         </div>
                     </div>
                     <div class="show-info">
@@ -845,11 +571,13 @@
                     </div>
                 </div>
 
-                <!-- 6. 樂活手語 -->
                 <div class="show-card">
-                    <div class="show-img-container">
-                        <div class="show-placeholder placeholder-purple">
-                            <i class="fa-solid fa-hands"></i>
+                    <div class="pop-illustration bg-sign">
+                        <div class="halftone-overlay"></div>
+                        <div class="pop-icon-sign">
+                            <div class="hand-l"></div>
+                            <div class="hand-r"></div>
+                            <i class="fa-solid fa-heart pop-fa-heart"></i>
                         </div>
                     </div>
                     <div class="show-info">
@@ -863,39 +591,27 @@
 
     </main>
 
-    <!-- 頁尾 -->
     <footer>
         <p>© 2026 太極門氣功養生學會新竹道館 版權所有</p>
     </footer>
 
     <script>
-        // 平滑滾動
-        function scrollToContent() {
-            document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // 5/17 活動倒數計時
+        // 倒數計時
         const targetDate = new Date("May 17, 2026 10:00:00").getTime();
-
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<div style='font-size:1.8rem; font-weight:900; color:var(--primary-red); padding: 15px;'>活動正精彩進行中 / 順利圓滿！</div>";
+                document.getElementById("countdown").innerHTML = "<div style='font-size:1.4rem; font-weight:900; color:var(--primary-red);'>活動正精彩進行中！</div>";
                 return;
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }, 1000);
     </script>
 </body>
