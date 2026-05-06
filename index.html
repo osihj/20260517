@@ -130,7 +130,7 @@
             z-index: 2;
         }
 
-        /* 精彩回顧標題 */
+        /* 精彩回顧標題（置中且前後加星） */
         .video-title {
             font-size: 1.25rem;
             font-weight: 900;
@@ -139,9 +139,11 @@
             letter-spacing: 2px;
             display: flex;
             align-items: center;
+            justify-content: center; /* 標題置中 */
             gap: 6px;
             z-index: 2;
             position: relative;
+            width: 100%;
         }
 
         .video-title::after {
@@ -293,7 +295,7 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 10px 16px 30px; /* 將上方 padding 縮小（原本為30px），拉近與上方時間盒的距離 */
+            padding: 10px 16px 30px; /* 將上方 padding 縮小，拉近與上方時間盒的距離 */
             position: relative;
             z-index: 2;
         }
@@ -302,7 +304,7 @@
             text-align: center;
             font-size: 1.8rem;
             color: #C32F27;
-            margin-bottom: 35px;
+            margin-bottom: 25px; /* 縮小與下方邀請語的間距 */
             position: relative;
             font-weight: 900;
             letter-spacing: 1.5px;
@@ -317,13 +319,26 @@
             border-radius: 2px;
         }
 
+        /* 展演邀請語風格（已加大字體、深色醒目並適合手機斷行） */
+        .section-invitation {
+            text-align: center;
+            font-size: clamp(1.1rem, 4.5vw, 1.25rem); /* 自適應大字體 */
+            line-height: 1.8;
+            color: #1A252F; /* 更深更醒目的炭黑色 */
+            max-width: 650px;
+            margin: 0 auto 35px; /* 保持與下方卡片群的舒適間距 */
+            font-weight: 900; /* 超粗體 */
+            letter-spacing: 1.5px;
+            padding: 0 10px;
+        }
+
         /* ==================== 地圖區 ==================== */
         .info-section {
             background: white;
             border-radius: 16px;
             padding: 25px 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            margin: 0 auto 50px; /* 維持下方間距，上方由 container 控制貼近 */
+            margin: 0 auto 50px; /* 維持下方間距 */
             max-width: 480px;
             border: 1px solid rgba(255,255,255,0.8);
             text-align: center;
@@ -591,7 +606,7 @@
         <div class="event-tag">文化饗宴</div>
 
         <h3 class="video-title">
-            <i class="fa-solid fa-star" style="color: var(--primary-orange);"></i> 精彩回顧
+            <i class="fa-solid fa-star" style="color: var(--primary-orange);"></i> 精彩回顧 <i class="fa-solid fa-star" style="color: var(--primary-orange);"></i>
         </h3>
 
         <div class="video-container">
@@ -631,16 +646,24 @@
             </p>
             
             <div class="map-embed-container-flat">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.146592233215!2d121.00705127602353!3d24.79058534803977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835c92b8041d1%3A0x4ff1249d7d747ddb!2z5paw5b955biC5pS_5bqc5YuMinimum5Y-K6Z2S5pS_6JmV!5e0!3m2!1szh-TW!2stw!4v1714578000000!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.6976694665424!2d121.00705127618957!3d24.790585399581023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835c92b8041d1%3A0x4ff1249d7df77dd1!2z5paw5b955biC5pS_5bqc6baddOW3p-WPi-mdkuW5tOitkw!5e0!3m2!1szh-TW!2stw!4v1715011200000!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <a href="https://www.google.com/maps/dir/?api=1&destination=%E6%96%B0%E7%AB%B9%E5%B8%82%E6%94%BF%E5%BA%9C%E5%8B%9E%E5%B7%A5%E5%8F%8A%E9%9D%92%E5%B9%B5%E8%99%95" target="_blank" class="btn-map">
+            <a href="https://www.google.com/maps/dir//Labor+Affairs+Bureau.+Hsinchu+City,+No.+99%E8%99%9F%E9%BE%8D%E5%B1%B1%E8%A5%BF%E8%B7%AF%E9%BE%8D%E5%B1%B1%E9%87%8C%E6%9D%B1%E5%8D%80,+%E6%96%B0%E7%AB%B9%E5%B8%82+Taiwan/data=!4m9!4m8!1m0!1m5!1m1!19sChIJ0UGAK8k1aDQRu330fZ0k8U8!2m2!1d121.0096262!2d24.790580499999997!3e0" target="_blank" class="btn-map">
                 <i class="fa-solid fa-location-arrow"></i> 開啟地圖導航
             </a>
         </section>
 
         <section>
             <h2 class="section-title">精采展演內容</h2>
+            <p class="section-invitation">
+                誠摯邀請您攜手親朋好友<br>
+                一同共襄盛舉，<br>
+                在喜慶與祥和的正氣中，<br>
+                共譜健康、快樂與幸福的<br>
+                美好樂章！
+            </p>
+            
             <div class="show-grid">
                 
                 <div class="show-card">
